@@ -2,10 +2,9 @@
 import Controllers.CarroController;
 import Models.Carro;
 
-import java.util.Arrays;
-
 public class App {
         public static void main(String[] args) throws Exception {
+                
                 Carro[] carros = new Carro[] {
                                 new Carro("Toyota", 2010),
                                 new Carro("Honda", 2015),
@@ -29,6 +28,31 @@ public class App {
                                 new Carro("Acura", 2017)
                 };
 
+                CarroController controller = new CarroController();
+                System.out.println("Arreglo original:" );
+                controller.imprimirCarro(carros);
+                controller.ordenarPorAnio(carros);
+
+                System.out.println("======================================");
+                System.out.println("Arreglo ordenado por año");
+                controller.imprimirCarro(carros);
+                System.out.println("======================================");
+
+
+                int anioBuscado = 2012;
+                int posicion = controller.busquedaBinaria(carros, anioBuscado);
+
+                if (posicion != -1){
+                        System.out.println("Carro encontrado: " + carros[posicion] + " el cual esta ubicado en la posicion: " + posicion);
+                }else{
+                        System.out.println("No se encontro un carro con el año: " + anioBuscado);
+                }
+
+
+
+                }
+
+
                 // Implementar un método para ordenar los carros por año en orden ascendente
                 // El metodo se le especificara en el enunciado del examen
 
@@ -43,4 +67,3 @@ public class App {
                 // Si encontro al carro en el arreglo de carros y su posisción
                 // Si no encontro al carro en el arreglo de carros
         }
-}
